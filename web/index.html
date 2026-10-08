@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NTE Calculator — Calculadora de Stats</title>
+    <meta name="description" content="Calcula tu daño esperado y descubre qué stat subir en tu siguiente cuadro de módulo." />
+    <meta name="theme-color" content="#14111c" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23d0bcff'/><text x='16' y='22' font-size='16' font-family='monospace' font-weight='700' text-anchor='middle' fill='%2314111c'>N</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <span class="tag">NTE // STAT ENGINE</span>
+        <h1>Calculadora de Stats</h1>
+        <p class="lede">Introduce tus estadísticas actuales y obtén el daño esperado y el mejor stat para tu siguiente cuadro de módulo.</p>
+      </header>
+
+      <section class="result" aria-live="polite">
+        <div class="result__damage">
+          <span class="label">Daño esperado directo</span>
+          <output id="damage" class="damage">0.00</output>
+        </div>
+        <div class="result__rec">
+          <span class="label">Recomendación inmediata</span>
+          <p class="rec-line">
+            <span class="rec-prefix">Subir:</span>
+            <strong id="rec-stat">—</strong>
+            <span id="rec-gain" class="gain">+0.00% Daño</span>
+          </p>
+          <p id="rec-reason" class="reason"></p>
+        </div>
+      </section>
+
+      <form class="stats" autocomplete="off" onsubmit="return false">
+        <fieldset>
+          <legend>Ataque</legend>
+          <label class="field">
+            <span>ATK Base (Personaje + Arma)</span>
+            <input id="baseAtk" inputmode="decimal" placeholder="0" />
+          </label>
+          <label class="field">
+            <span>ATK Adicional Total (ataque verde)</span>
+            <input id="atkGreen" inputmode="decimal" placeholder="0" />
+          </label>
+          <label class="field">
+            <span>ATK Plano (Módulos/Artefactos)</span>
+            <input id="flatAtk" inputmode="decimal" placeholder="0" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Crítico y bonos</legend>
+          <label class="field">
+            <span>Probabilidad CRIT %</span>
+            <input id="critRate" inputmode="decimal" placeholder="5" />
+          </label>
+          <label class="field">
+            <span>Daño CRIT %</span>
+            <input id="critDmg" inputmode="decimal" placeholder="50" />
+          </label>
+          <label class="field">
+            <span>Bono de Daño % (Elemental/Universal)</span>
+            <input id="dmgBonus" inputmode="decimal" placeholder="0" />
+          </label>
+        </fieldset>
+        <div class="actions">
+          <p class="hint">Mínimos innatos aplicados: 5% Prob. CRIT y 50% Daño CRIT.</p>
+          <button type="button" id="reset">Reiniciar</button>
+        </div>
+      </form>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
