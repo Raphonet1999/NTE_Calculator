@@ -1,0 +1,5 @@
+# Versión web de NTE Calculator (sitio estático, sin paso de build).
+# El proyecto Android original sigue en /app.
+[build]
+  publish = "web"
+  command = ""

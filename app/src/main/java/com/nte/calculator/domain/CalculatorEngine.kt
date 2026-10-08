@@ -102,7 +102,8 @@ object CalculatorEngine {
         gains[StatType.CRIT_DMG] = (calculateExpectedDamage(withMoreCritDmg) - baseDamage) / baseDamage
 
         // 3. Evaluar 1 Cuadro de ATQ% (+1.25%)
-        val withMoreAtkPct = currentStats.copy(atkPercent = (currentStats.atkPercent * 100 ) / currentStats.baseAtk + MODULE_SLOT_ATK_PERCENT)
+        // atkPercent ya llega convertido a % desde el ViewModel (ataque verde / ATK base * 100)
+        val withMoreAtkPct = currentStats.copy(atkPercent = currentStats.atkPercent + MODULE_SLOT_ATK_PERCENT)
         gains[StatType.ATK_PERCENT] = (calculateExpectedDamage(withMoreAtkPct) - baseDamage) / baseDamage
 
         // 4. Evaluar 1 Cuadro de Bono Universal (+1.0%)
